@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('projets', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('Description');
-            $table->text('Montant');
-            $table->text('Ddebut');
-            $table->text('Dfin');
+            $table->string('Description');
+            $table->integer('Montant');
+            $table->date('Ddebut');
+            $table->date('Dfin');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

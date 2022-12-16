@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payements', function (Blueprint $table) {
+        Schema::create('ppayements', function (Blueprint $table) {
             $table->id();
+            $table->string('Tpayement');
             $table->integer('Montant');
-            $table->foreignId('projet_id');
-            $table->foreignId('user_id');
-            $table->foreignId('mpaye_id');
-            $table->foreignId('typepayement_id');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payements');
+        Schema::dropIfExists('ppayements');
     }
 };

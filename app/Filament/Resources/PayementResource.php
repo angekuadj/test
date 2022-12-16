@@ -38,7 +38,8 @@ class PayementResource extends Resource
             Wizard::make([
                 Wizard\Step::make('Description')
                     ->schema([
-                        Forms\Components\TextInput::make('Montant')->label('Montant'),
+                        Forms\Components\TextInput::make('name')->label('Nom')->numeric(),
+                        Forms\Components\TextInput::make('Montant')->label('Montant')->numeric(),
                         Select::make('projet_id')
                             ->label('Projet')
                             ->options(
@@ -75,6 +76,7 @@ class PayementResource extends Resource
     {
         return $table
             ->columns([
+                
                 Tables\Columns\TextColumn::make('Montant')->label('Montant'),
                 Tables\Columns\TextColumn::make('projet.Description')->label('Projet'),
                 Tables\Columns\TextColumn::make('user.name')->label('User'),
