@@ -24,6 +24,18 @@ class DatabaseSeeder extends Seeder
         DB::table('roles')->insert([
             'name'=>'SuperAdmin'
         ]);
+        DB::table('mpayes')->insert([
+            'name'=>'Orange'
+        ]);
+        DB::table('typepayements')->insert([
+            'name'=>'programmé'
+        ]);
+        DB::table('typepayements')->insert([
+            'name'=>'immediat'
+        ]);
+        DB::table('mpayes')->insert([
+            'name'=>'Flooz'
+        ]);
         DB::table('roles')->insert([
             'name'=>'User'
         ]);

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('Montant');
             $table->foreignId('projet_id');
             $table->foreignId('user_id');
+            $table->foreignId('mpaye_id');
+            $table->foreignId('typepayement_id');
             $table->timestamps();
         });
     }

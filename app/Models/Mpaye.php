@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Model;
 
-class Projet extends Model
+class Mpaye extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -21,15 +21,15 @@ class Projet extends Model
      */
     protected $fillable = [
         'name',
-        'Description',
-        'Montant',
-        'Ddebut',
-        'Dfin'
     ];
 
-    public function projets()
+    public function mpayes()
     {
-        return $this->hasMany(Payement::class, 'projet_id');
+        return $this->hasMany(Payement::class, 'mpaye_id');
     }
+    // public function projets()
+    // {
+    //     return $this->hasMany(Payement::class, 'projet_id');
+    // }
 
 }

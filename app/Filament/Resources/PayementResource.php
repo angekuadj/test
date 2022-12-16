@@ -4,12 +4,15 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PayementResource\Pages;
 use App\Filament\Resources\PayementResource\RelationManagers;
+use App\Models\Mpaye;
 use App\Models\Payement;
 use App\Models\Projet;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\CheckboxList;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Wizard;
 use Filament\Resources\Form;
@@ -18,6 +21,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\DB;
 
 class PayementResource extends Resource
 {
@@ -28,6 +32,7 @@ class PayementResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+        
         ->schema([
 
             Wizard::make([
@@ -47,14 +52,20 @@ class PayementResource extends Resource
                     ]),
                 Wizard\Step::make('Moyen de payement')
                     ->schema([
-                        Checkbox::make('is_admin')->label('Orange Money')->inline(false),
-                        Checkbox::make('is_admin')->label('Flooz')->inline(false),
-                        Checkbox::make('is_admin')->label('Mtn Money')->inline(false),
+                        Select::make('mpaye_id')
+                        ->label('Choix ')
+                        ->options(
+                            Mpaye::all()->pluck('name', 'id'))
+                        ->searchable(),
+                        Forms\Components\TextInput::make('Numero')->label('Numero'),
                     ]),
                 Wizard\Step::make('Finaliser le payement ')
                     ->schema([
-                        Forms\Components\TextInput::make('Numero')->label('Numero'),
+                        Radio::make('Valider')
+                        ->label('etre vous sur?')
+                        ->boolean()
                     ]),
+                    
             ])
            
         ]);

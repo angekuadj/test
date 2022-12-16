@@ -33,5 +33,13 @@ class Payement extends Model
     {
         return $this->belongsTo(Projet::class);
     }
+    public function mpaye()
+    {
+        return $this->belongsTo(Mpaye::class);
+    }
+    public function typepayement()
+    {
+        return $this->belongsTo(Typepayement::class);
+    }
 
 }
